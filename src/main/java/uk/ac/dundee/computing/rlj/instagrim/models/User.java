@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package uk.ac.dundee.computing.aec.instagrim.models;
+package uk.ac.dundee.computing.rlj.instagrim.models;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
@@ -14,8 +14,8 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import uk.ac.dundee.computing.aec.instagrim.lib.AeSimpleSHA1;
-import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
+import uk.ac.dundee.computing.rlj.instagrim.lib.AeSimpleSHA1;
+import uk.ac.dundee.computing.rlj.instagrim.stores.Pic;
 
 /**
  *
@@ -47,6 +47,9 @@ public class User {
         
         return true;
     }
+            
+    
+    
     
     public boolean IsValidUser(String username, String Password){
         AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();

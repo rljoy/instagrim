@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package uk.ac.dundee.computing.aec.instagrin.filters;
+package uk.ac.dundee.computing.rlj.instagrim.filters;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -21,7 +21,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
+import uk.ac.dundee.computing.rlj.instagrim.stores.LoggedIn;
 
 /**
  *
@@ -116,7 +116,7 @@ public class ProtectPages implements Filter {
         HttpSession session=httpReq.getSession(false);
 	LoggedIn li=(LoggedIn)session.getAttribute("LoggedIn");
         System.out.println("Session in filter "+session);
-        if ((li == null)  || (li.getlogedin()==false)){
+        if ((li == null)  || (li.getloggedin()==false)){
                System.out.println("Foward to login");
                 RequestDispatcher rd=request.getRequestDispatcher("/login.jsp");
 		rd.forward(request,response);

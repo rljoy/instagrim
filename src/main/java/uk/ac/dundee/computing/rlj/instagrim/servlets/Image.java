@@ -1,4 +1,4 @@
-package uk.ac.dundee.computing.aec.instagrim.servlets;
+package uk.ac.dundee.computing.rlj.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.BufferedInputStream;
@@ -22,11 +22,11 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
-import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.instagrim.lib.Convertors;
-import uk.ac.dundee.computing.aec.instagrim.models.PicModel;
-import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
-import uk.ac.dundee.computing.aec.instagrim.stores.Pic;
+import uk.ac.dundee.computing.rlj.instagrim.lib.CassandraHosts;
+import uk.ac.dundee.computing.rlj.instagrim.lib.Convertors;
+import uk.ac.dundee.computing.rlj.instagrim.models.PicModel;
+import uk.ac.dundee.computing.rlj.instagrim.stores.LoggedIn;
+import uk.ac.dundee.computing.rlj.instagrim.stores.Pic;
 
 /**
  * Servlet implementation class Image
@@ -98,7 +98,7 @@ public class Image extends HttpServlet {
         PicModel tm = new PicModel();
         tm.setCluster(cluster);
         java.util.LinkedList<Pic> lsPics = tm.getPicsForUser(User);
-        RequestDispatcher rd = request.getRequestDispatcher("/UsersPics.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/usersPics.jsp");
         request.setAttribute("Pics", lsPics);
         rd.forward(request, response);
 
@@ -138,7 +138,7 @@ public class Image extends HttpServlet {
             HttpSession session=request.getSession();
             LoggedIn lg= (LoggedIn)session.getAttribute("LoggedIn");
             String username="majed";
-            if (lg.getlogedin()){
+            if (lg.getloggedin()){
                 username=lg.getUsername();
             }
             if (i > 0) {

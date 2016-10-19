@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package uk.ac.dundee.computing.aec.instagrim.servlets;
+package uk.ac.dundee.computing.rlj.instagrim.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uk.ac.dundee.computing.aec.instagrim.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.instagrim.models.User;
-import uk.ac.dundee.computing.aec.instagrim.stores.LoggedIn;
+import uk.ac.dundee.computing.rlj.instagrim.lib.CassandraHosts;
+import uk.ac.dundee.computing.rlj.instagrim.models.User;
+import uk.ac.dundee.computing.rlj.instagrim.stores.LoggedIn;
 
 /**
  *
@@ -48,17 +48,22 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+               
         String username=request.getParameter("username");
+        username = username.toLowerCase();
         String password=request.getParameter("password");
         
         User us=new User();
         us.setCluster(cluster);
         boolean isValid=us.IsValidUser(username, password);
+        
+        
         HttpSession session=request.getSession();
         System.out.println("Session in servlet "+session);
+        
         if (isValid){
             LoggedIn lg= new LoggedIn();
-            lg.setLogedin();
+            lg.setLoggedin();
             lg.setUsername(username);
             //request.setAttribute("LoggedIn", lg);
             
@@ -68,10 +73,23 @@ public class Login extends HttpServlet {
 	    rd.forward(request,response);
             
         }else{
-            response.sendRedirect("/Instagrim/login.jsp");
+            
+            
+            response.sendRedirect("login.jsp");
         }
         
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+	rd.forward(request,response);
+        
+    }
+    
+    
 
     /**
      * Returns a short description of the servlet.

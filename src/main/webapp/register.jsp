@@ -14,25 +14,21 @@
     </head>
     <body>
         <header>
-        <h1>InstaGrim ! </h1>
+        <h1>InstaGrim</h1>
         <h2>Your world in Black and White</h2>
-        </header>
-        <nav>
-            <ul>
-                
-                <li><a href="/Instagrim/Images/majed">Sample Images</a></li>
-            </ul>
-        </nav>
-       
+        </header>        
         <article>
-            <h3>Register as user</h3>
+            <h3>Register as user:</h3>
+            
             <form method="POST"  action="Register">
                 <ul>
-                    <li>User Name <input type="text" name="username"></li>
-                    <li>Password <input type="password" name="password"></li>
+                    
+                    <li>Username<input pattern=".{5,10}" type="text" name="username" required title="username must be between 5 to 10 characters long"></li>
+                   <li>Password<input pattern=".{8,16}" type="password" name="password" required title="password must be between 8 to 16 characters long"></li>
+                    
                 </ul>
                 <br/>
-                <input type="submit" value="Regidter"> 
+                <input type="submit" value="Register"> 
             </form>
 
         </article>

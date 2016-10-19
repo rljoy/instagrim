@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 
-package uk.ac.dundee.computing.aec.instagrim.stores;
+package uk.ac.dundee.computing.rlj.instagrim.stores;
 
 /**
  *
  * @author Administrator
  */
-public class LoggedIn {
-    boolean logedin=false;
-    String Username=null;
-    public void LogedIn(){
+    public class LoggedIn {
+    private boolean loggedin=false;
+    private String Username=null;
+    public void LoggedIn(){
         
     }
     
@@ -23,17 +23,17 @@ public class LoggedIn {
     public String getUsername(){
         return Username;
     }
-    public void setLogedin(){
-        logedin=true;
+    public void setLoggedin(){
+        loggedin=true;
     }
     public void setLogedout(){
-        logedin=false;
+        loggedin=false;
     }
     
-    public void setLoginState(boolean logedin){
-        this.logedin=logedin;
+    public void setLoginState(boolean loggedin){
+        this.loggedin=loggedin;
     }
-    public boolean getlogedin(){
-        return logedin;
+    public boolean getloggedin(){
+        return loggedin;
     }
 }
