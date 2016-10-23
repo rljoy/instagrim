@@ -1,7 +1,7 @@
 <%-- 
     Document   : upload
     Created on : Sep 22, 2014, 6:31:50 PM
-    Author     : Administrator
+    Author     : Ronan Joy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,24 +13,17 @@
         <link rel="stylesheet" type="text/css" href="Styles.css" />
     </head>
     <body>
-        <h1>InstaGrim ! </h1>
-        <h2>Your world in Black and White</h2>
-        <nav>
-            <ul>
-                
-                
-            </ul>
-        </nav>
- 
+        <h1>InstaGrim</h1>
+        <h2>Your world in Black and White</h2>        
         <article>
-            <h3>File Upload</h3>
+            <h3>File Upload:</h3>
             <form method="POST" enctype="multipart/form-data" action="Image">
-                File to upload: <input type="file" name="upfile"><br/>
-
-                <br/>
-                <input type="submit" value="Press"> to upload the file!
+            File to upload: <input type="file" name="upfile"><br/>
+            <br/>
+            
+            <input type="submit" value="Press"> to upload the file!
+            
             </form>
-
         </article>
         <footer>
             <ul>

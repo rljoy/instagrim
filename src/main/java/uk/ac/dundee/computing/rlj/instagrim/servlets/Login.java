@@ -48,33 +48,39 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-               
+        //get values from client to send to server       
         String username=request.getParameter("username");
+        //this transfers any upper case charcters in the username to lower
         username = username.toLowerCase();
         String password=request.getParameter("password");
         
+        
         User us=new User();
         us.setCluster(cluster);
+        //checking if username and password are valid
         boolean isValid=us.IsValidUser(username, password);
         
-        
+      
         HttpSession session=request.getSession();
         System.out.println("Session in servlet "+session);
         
+        
         if (isValid){
+            
             LoggedIn lg= new LoggedIn();
             lg.setLoggedin();
             lg.setUsername(username);
-            //request.setAttribute("LoggedIn", lg);
+            
             
             session.setAttribute("LoggedIn", lg);
             System.out.println("Session in servlet "+session);
+            
             RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 	    rd.forward(request,response);
             
         }else{
             
-            
+            session.setAttribute("LoginFailed", "Invalid username or password!");
             response.sendRedirect("login.jsp");
         }
         
@@ -83,6 +89,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         
         RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
 	rd.forward(request,response);

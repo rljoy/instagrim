@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Sep 28, 2014, 7:01:44 PM
-    Author     : Administrator
+    Author     : Ronan Joy
 --%>
 
 
@@ -16,39 +16,37 @@
     </head>
     <body>
         <header>
-            <h1 style="font-family:Blackadder ITC;"><center>Instagrim</center></h1>
-            <h2>Your world in Black and White...</h2>
+            <h1>Instagrim</h1>
+            <h2>Your world in Black and White</h2>
         </header>
-        <nav>
-            
-            <ul>
-
-                
-                
-                
+        <nav>            
+            <ul>  
                 <li><a href="/Instagrim/Upload">Upload</a></li>
-                    <%
-                        
+                
+                    <%                        
                         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
                         if (lg != null) {
-                            String UserName = lg.getUsername();
+                            String UserName = lg.getUsername();   
+                            
                             if (lg.getloggedin()) {
                     %>
-
+                    
                 <li><a href="/Instagrim/Images/<%=lg.getUsername()%>">Your Images
+                        <form method ="POST" action="Logout"> 
+                        <input type ="submit" value ="Logout"></form>                          
+                        
                     <%}
                        }else{
                     %>
-                <li><a href="/Instagrim/Register">Register</a></li>
-                                
+                    
+                <li><a href="/Instagrim/Register">Register</a></li>                                
                 <li><a href="/Instagrim/Login">Login</a></li>
                 
-                <%
+                    <%
                             
                             
                     }%>
-            </ul>
-            
+            </ul>            
         </nav>
         <footer>
             <ul>

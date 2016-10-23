@@ -20,6 +20,7 @@ import uk.ac.dundee.computing.rlj.instagrim.stores.Pic;
 /**
  *
  * @author Administrator
+ * 
  */
 public class User {
     Cluster cluster;
@@ -27,46 +28,57 @@ public class User {
         
     }
     
-    public boolean RegisterUser(String username, String Password){
+    public boolean RegisterUser(String username, String password, String firstname, String lastname, String email){
         AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();
         String EncodedPassword=null;
-        try {
-            EncodedPassword= sha1handler.SHA1(Password);
-        }catch (UnsupportedEncodingException | NoSuchAlgorithmException et){
+        try 
+        {
+            EncodedPassword= sha1handler.SHA1(password);
+        }
+        
+        catch (UnsupportedEncodingException | NoSuchAlgorithmException et)
+        {
             System.out.println("Can't check your password");
             return false;
         }
+        
         Session session = cluster.connect("instagrim");
-        PreparedStatement ps = session.prepare("insert into userprofiles (login,password) Values(?,?)");
+        PreparedStatement ps = session.prepare("insert into userprofiles (login,password,first_name,last_name,email) Values(?,?,?,?,?)");
        
         BoundStatement boundStatement = new BoundStatement(ps);
-        session.execute( // this is where the query is executed
-                boundStatement.bind( // here you are binding the 'boundStatement'
-                        username,EncodedPassword));
-        //We are assuming this always works.  Also a transaction would be good here !
         
+        // this is where the query is executed
+        // here you are binding the 'boundStatement'
+        session.execute(boundStatement.bind(username,EncodedPassword,firstname,lastname,email));
+        
+        //We are assuming this always works.  Also a transaction would be good here!        
         return true;
     }
-            
-    
     
     
     public boolean IsValidUser(String username, String Password){
         AeSimpleSHA1 sha1handler=  new AeSimpleSHA1();
         String EncodedPassword=null;
-        try {
+        try 
+        {
             EncodedPassword= sha1handler.SHA1(Password);
-        }catch (UnsupportedEncodingException | NoSuchAlgorithmException et){
+        }
+        
+        catch (UnsupportedEncodingException | NoSuchAlgorithmException et)
+        {
             System.out.println("Can't check your password");
             return false;
         }
+        
         Session session = cluster.connect("instagrim");
         PreparedStatement ps = session.prepare("select password from userprofiles where login =?");
         ResultSet rs = null;
+        
         BoundStatement boundStatement = new BoundStatement(ps);
         rs = session.execute( // this is where the query is executed
                 boundStatement.bind( // here you are binding the 'boundStatement'
                         username));
+        
         if (rs.isExhausted()) {
             System.out.println("No Images returned");
             return false;
@@ -77,14 +89,11 @@ public class User {
                 if (StoredPass.compareTo(EncodedPassword) == 0)
                     return true;
             }
-        }
-   
+        }   
     
     return false;  
     }
        public void setCluster(Cluster cluster) {
         this.cluster = cluster;
     }
-
-    
 }

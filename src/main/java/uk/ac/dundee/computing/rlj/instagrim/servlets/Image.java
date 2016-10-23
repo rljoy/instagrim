@@ -32,6 +32,7 @@ import uk.ac.dundee.computing.rlj.instagrim.stores.Pic;
  * Servlet implementation class Image
  */
 @WebServlet(urlPatterns = {
+    
     "/Image",
     "/Image/*",
     "/Thumb/*",

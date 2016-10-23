@@ -21,12 +21,13 @@ package uk.ac.dundee.computing.rlj.instagrim.stores;
         this.Username=name;
     }
     public String getUsername(){
+        
         return Username;
     }
     public void setLoggedin(){
         loggedin=true;
     }
-    public void setLogedout(){
+    public void setLoggedout(){
         loggedin=false;
     }
     

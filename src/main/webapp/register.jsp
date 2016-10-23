@@ -18,19 +18,20 @@
         <h2>Your world in Black and White</h2>
         </header>        
         <article>
-            <h3>Register as user:</h3>
-            
+            <h3>Register as user:</h3>            
             <form method="POST"  action="Register">
-                <ul>
-                    
-                    <li>Username<input pattern=".{5,10}" type="text" name="username" required title="username must be between 5 to 10 characters long"></li>
-                   <li>Password<input pattern=".{8,16}" type="password" name="password" required title="password must be between 8 to 16 characters long"></li>
-                    
+                <ul>                    
+                   
+                   <li>Username: <input pattern=".{5,10}" type="text" name="username" required title="username must be between 5 to 10 characters long"></li>
+                   <li>Password: <input pattern=".{8,16}" type="password" name="password" required title="password must be between 8 to 16 characters long"></li>
+                   <li>First Name: <input type="text" name="firstname" required </li>
+                   <li>Last Name: <input type="text" name="lastname" required </li>
+                   <li>Email: <input  type="email" name="email" required </li> 
+                   
                 </ul>
                 <br/>
                 <input type="submit" value="Register"> 
             </form>
-
         </article>
         <footer>
             <ul>

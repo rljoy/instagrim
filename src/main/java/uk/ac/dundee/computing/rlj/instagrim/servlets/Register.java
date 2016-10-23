@@ -52,11 +52,16 @@ public class Register extends HttpServlet {
             String username=request.getParameter("username");
             username = username.toLowerCase();
             String password=request.getParameter("password");
-    
+            String firstname=request.getParameter("firstname");
+            String lastname=request.getParameter("lastname");
+            String email=request.getParameter("email");    
            
             User us=new User();
             us.setCluster(cluster);
+            us.RegisterUser(username, password, firstname, lastname, email);
             
+            response.sendRedirect("/Instagrim");
+         
     }
     
     @Override

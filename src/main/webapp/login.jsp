@@ -1,7 +1,7 @@
 <%-- 
     Document   : login.jsp
     Created on : Sep 28, 2014, 12:04:14 PM
-    Author     : Administrator
+    Author     : Ronan Joy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Instagrim</title>
         <link rel="stylesheet" type="text/css" href="Styles.css" />
-
     </head>
     <body>
         <header>
@@ -19,18 +18,17 @@
         <h2>Your world in Black and White</h2>
         </header>
         <article>
-            <h3>Login</h3>
+            <h3>Login:</h3>
             <form method="POST"  action="Login">
-                <ul>
+                <ul>       
                     
-                    <li>User Name <input type="text" name="username", required ></li>
-                    <li>Password <input type="password" name="password", required ></li>
+                    <li>User Name: <input type="text" name="username" required ></li>
+                    <li>Password: <input type="password" name="password" required ></li>                    
                     
                 </ul>
                 <br/>
                 <input type="submit" value="Login"> 
             </form>
-
         </article>
         <footer>
             <ul>
